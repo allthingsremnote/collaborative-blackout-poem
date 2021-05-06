@@ -56,7 +56,7 @@ var colorDif = 50;
 function randomColor() {
     return "#" + Math.round(Math.random() * colorDif + colorMin) + Math.round(Math.random() * colorDif + colorMin) + Math.round(Math.random() * colorDif + colorMin);
 }
-http.listen(80, () => {
+http.listen(8080, () => {
     console.log('listening on *:8080');
 });
 return
