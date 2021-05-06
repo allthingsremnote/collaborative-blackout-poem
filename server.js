@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+require('dotenv').config()
+
 app.use(express.static(__dirname + '/public'));
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -56,7 +58,7 @@ var colorDif = 50;
 function randomColor() {
     return "#" + Math.round(Math.random() * colorDif + colorMin) + Math.round(Math.random() * colorDif + colorMin) + Math.round(Math.random() * colorDif + colorMin);
 }
-http.listen(8080, () => {
+http.listen(process.env.port || 8080, () => {
     console.log('listening on *:8080');
 });
 return
