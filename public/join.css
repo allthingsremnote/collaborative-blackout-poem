@@ -1,0 +1,275 @@
+#drawingCanvas {
+  /* width: 100vw; */
+  /* height: 100vh; */
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  transform-origin: left top;
+  z-index: 1;
+}
+#textCanvas {
+  pointer-events: none;
+  /* width: calc(100vw - 100px); */
+  /* height: calc(100vh - 100px); */
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  transform-origin: left top;
+}
+#options {
+  background: #fff;
+  left: 0px;
+  bottom: 0px;
+  position: fixed;
+  padding-top: 35px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  width: 140px;
+  height: 110px;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-10px);
+  /* background: rgb(224, 224, 224); */
+  box-shadow: grey 0px 0px 5px;
+  border-radius: 0px 10px 0px 0px;
+  z-index: 10;
+}
+#codeDisplay {
+  font-family: Poppins;
+  bottom: 155px;
+  left: 0px;
+  position: fixed;
+  height: 30px;
+  background: white;
+  font-size: 20px;
+  width: max-content;
+  padding: 5px;
+  padding-top: 10px;
+  padding-right: 15px;
+  border-radius: 0px 10px 0px 0px;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(-10px);
+  opacity: 0;
+}
+#radiusRange {
+  bottom: 130px;
+  left: 4px;
+  position: fixed;
+  width: 115px;
+}
+.optionButton {
+  padding: 15px;
+  display: inline-block;
+  background: white;
+  box-shadow: grey 0px 0px 5px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: transform 0.2s;
+  transform: scale(1);
+}
+.buttonSelected {
+  transform: scale(1.15);
+}
+body {
+  background: #22aed1;
+}
+#paperBackground {
+  background: #fff;
+  border-radius: 3px;
+  position: absolute;
+  z-index: -1;
+  box-shadow: black 0px 0px 1px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.messyPaper {
+  border-radius: 3px;
+  width: 100%;
+  height: 100%;
+  box-shadow: black 0px 0px 1px;
+  background: #fff;
+  position: absolute;
+}
+.messyPaper:nth-child(1) {
+  transform: rotate(-0.3deg);
+}
+.messyPaper:nth-child(2) {
+  transform: rotate(0.2deg);
+}
+#drawMarker {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  background: gray;
+  opacity: 0.5;
+  z-index: 20;
+  width: initial;
+  height: initial;
+  /* border: gray solid 5px; */
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius: 5px;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #ff5154;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+#hiddenDrawingCanvas {
+  display: none;
+}
+#downloadCanvas {
+  width: 100%;
+  height: auto;
+  display: none;
+  margin-top: 50%;
+}
+#downloadButton {
+}
+#chatButton {
+  transform-origin: center center;
+}
+#chatContainer {
+  width: calc(50vw - 150px);
+  height: calc(50vh);
+  bottom: 0px;
+  right: 0px;
+  background: white;
+  border-radius: 10px 0px 0px 0px;
+  box-shadow: #8080809c 0px 0px 10px;
+  z-index: 50;
+  position: fixed;
+  font-family: Poppins;
+  transition: opacity 0.1s;
+  opacity: 0;
+  display: none;
+}
+#chatInput {
+  width: calc(100% - 100px - 10px);
+  left: 30px;
+  bottom: 35px;
+  position: absolute;
+  padding: 0px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: gray 0px 0px 5px;
+  border: none;
+  transition: color 0.2s;
+  padding-left: 10px;
+  outline: none;
+  color: #191919;
+}
+#chatTable {
+  word-break: break-word;
+  height: calc(100% - 115px);
+  overflow-y: scroll;
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #191919;
+}
+tr {
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+td {
+}
+#chatClose {
+  left: 5px;
+  position: absolute;
+  margin: 0px;
+  width: max-content;
+  height: max-content;
+  color: #191919;
+  cursor: pointer;
+}
+#sendChat {
+  right: 30px;
+  bottom: 35px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #22aed1;
+  box-shadow: gray 0px 0px 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+#sendChat:hover {
+  transform: scale(1.1);
+}
+#sendPlane {
+  margin-top: 50%;
+  margin-left: 50%;
+  transform: translate(-60%, -45%);
+  opacity: 1;
+  color: white;
+  transition: transform 0.2s cubic-bezier(0.74, 0.15, 0.75, 0.91), opacity 0.2s;
+}
+.chatPicture {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg) scale(1.05);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg) scale(1.1);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg) scale(1.05);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg) scale(1.1);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg) scale(1.05);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}

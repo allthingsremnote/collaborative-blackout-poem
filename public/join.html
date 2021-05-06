@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <title>Socket.IO whiteboard</title> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/join.css">
+</head>
+
+<body onbeforeunload="return leavingSite();">
+    <div id="chatContainer">
+        <div id="chatClose">
+            ✖
+        </div>
+        <table id="chatTable">
+        </table>
+        <input id="chatInput" onfocus="this.value = this.value;">
+        <div id="sendChat"><i class="fas fa-paper-plane" id="sendPlane"></i></div>
+    </div>
+
+
+    <div style="font-family: Poppins;"></div>
+    <div id="drawMarker"></div>
+    <canvas id="drawingCanvas"></canvas>
+    <canvas id="hiddenDrawingCanvas"></canvas>
+    <canvas id="textCanvas"></canvas>
+    <canvas id="downloadCanvas"></canvas>
+    <div id="paperBackground">
+        <div class="messyPaper"></div>
+        <div class="messyPaper"></div>
+    </div>
+    <div id="codeDisplay"></div>
+    <div id="options">
+        <i class="fas fa-pen buttonSelected optionButton" id="pen"></i>
+        <i class="fas fa-eraser optionButton" id="eraser"></i>
+        <br>
+        <br>
+        <i class="fas fa-download optionButton" id="downloadButton"></i>
+        <i class="fas fa-comments optionButton" id="chatButton"></i>
+        <input type="range" id="radiusRange" min="5" max="25" value="5" class="slider">
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/join.js"></script>
+    <script src="https://kit.fontawesome.com/6742c0c72c.js" crossorigin="anonymous"
+        onload="fontawesomeLoaded()"></script>
+</body>
+
+</html>
