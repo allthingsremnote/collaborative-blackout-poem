@@ -1,12 +1,7 @@
 var createPoem = document.getElementById("createPoem");
 var textInput = document.getElementById("textInput");
 
-textInput.value = `Dogs were probably the first tame animals. They have accompanied humans for at least 20,000 years and possibly as many as 40,000. Scientists generally agree that all dogs, domestic and wild, share a common wolf ancestor; at some point grey wolves and dogs went on their separate evolutionary ways.
-
-Dog Breeds
-
-Today humans have bred hundreds of different domestic dog breeds—some of which could never survive in the wild. Despite their many shapes and sizes all domestic dogs, from Newfoundlands to pugs, are members of the same species—Canis familiaris. Although they have domestic temperaments, dogs are related to wolves, foxes, and jackals.`
-// textInput.value = "";
+textInput.value = "";
 
 
 createPoem.onclick = async function () {
@@ -29,7 +24,10 @@ joinRoom.onclick = async function () {
     var room = await fetch(`${location.href}join/${codeInput.value}`);
     room = await room.text();
     if (room == "404") {
-        alert("no room found dumby");
+        codeInput.style.border = "red solid 3px";
+        setTimeout(function () {
+            codeInput.style.border = "red solid 0px";
+        }, 100);
     } else {
         location.replace(`${location.href}join/${codeInput.value}`);
     }

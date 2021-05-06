@@ -10,6 +10,7 @@
   font-family: Poppins;
   color: white;
   padding: 0px 10px 0px 10px;
+  user-select: none;
 }
 h1 {
   color: white;
@@ -22,6 +23,8 @@ h1 {
   transform: translateX(-50%);
   position: absolute;
   width: max-content;
+  text-shadow: gray 0px 0px 5px;
+  text-align: center;
 }
 h2 {
   color: white;
@@ -81,6 +84,8 @@ h2 {
   font-size: 30px;
   text-align: center;
   color: #171717;
+
+  transition: border 0.1s;
 }
 
 #joinCont {

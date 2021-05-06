@@ -11,11 +11,14 @@ app.use(express.json());
 app.get('/join/:id', (req, res) => {
     console.log(req.params.id);
     if (lines.get(req.params.id) == undefined) {
-        res.redirect("/")
+        res.send("404")
     } else {
         res.sendFile(__dirname + '/public/join.html');
     }
 });
+app.get('/join', (req, res) => {
+    res.send("404");
+})
 app.post('/createPoem', (req, res) => {
     var id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
     lines.set(id, { "id": id, "text": req.body.text, "width": req.body.screenWidth, "height": req.body.screenHeight });
