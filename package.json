@@ -2,6 +2,9 @@
   "name": "MiniDoodle",
   "description": "Collaborative drawing canvas",
   "author": "Code-and.Coffee",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "4.x",
