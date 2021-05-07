@@ -22,8 +22,7 @@ createPoem.onclick = async function () {
 }
 joinRoom.onclick = async function () {
     var room = await fetch(`${location.href}join/${codeInput.value}`);
-    room = await room.text();
-    if (room == "404") {
+    if (room.redirected) {
         codeInput.style.border = "red solid 3px";
         setTimeout(function () {
             codeInput.style.border = "red solid 0px";
@@ -36,6 +35,7 @@ joinRoom.onclick = async function () {
 createModeButton.onclick = function () {
     createModeButton.style.display = "none";
     createCont.style.display = "block";
+    textInput.focus();
 }
 
 

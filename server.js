@@ -11,13 +11,13 @@ app.use(express.json());
 app.get('/join/:id', (req, res) => {
     console.log(req.params.id);
     if (lines.get(req.params.id) == undefined) {
-        res.send("404")
+        res.redirect("/")
     } else {
         res.sendFile(__dirname + '/public/join.html');
     }
 });
 app.get('/join', (req, res) => {
-    res.send("404");
+    res.redirect("/")
 })
 app.post('/createPoem', (req, res) => {
     var id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
@@ -32,6 +32,15 @@ io.on('connection', (socket) => {
             socket.to(msg.id).broadcast.emit('event', { msg: "newLine", 'data': msg.data });
         }
         if (msg.msg == "newUser") {
+
+            try {
+                console.log(lines.get(msg.id).text);
+            }
+            catch {
+                socket.to(msg.id).broadcast.emit('event', { msg: "joinedClosedRoom" });
+                return
+            }
+
             socket.join(msg.id);
 
             //Get the first user, pull their canvas and send to new user
@@ -64,4 +73,16 @@ function randomColor() {
 http.listen(process.env.PORT || 8080, () => {
     console.log('listening on *:8080');
 });
-return
+setInterval(function () {
+    var allSockets = ([...io.of("/").sockets].map(function (x) { return x[1] }));
+    allSockets = allSockets.map(function (x) {
+        return x.rooms
+    });
+    console.log([...lines.values()], "LINES");
+    // console.log(allSockets, "ALL");
+    lines.forEach(function (y) {
+        if (allSockets.filter(function (x) { return x.has(y.id) }).length == 0) {
+            lines.delete(y.id);
+        }
+    })
+}, 10000);

@@ -29,6 +29,10 @@ if (localStorage.getItem("currentTool")) {
     document.getElementById(localStorage.getItem("currentTool")).click();
 }
 socket.on('event', function (msg, callback) {
+    console.log(msg);
+    if (msg.msg == "joinedClosedRoom") {
+        location.replace("/");
+    }
     if (msg.msg == "newLine") {
         drawLine(msg.data);
     }
